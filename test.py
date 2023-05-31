@@ -19,4 +19,4 @@ for average_element in average_elements:
 
 average = total_sum / count
 
-print("Average of the 'average' column:", average)
+print(round(average))
