@@ -7,7 +7,7 @@ pipeline {
         stage('Hello') {
             steps {
                 sh 'ls -ltr'
-                sh(script:"python3 test.py", returnStdout: true)
+                echo sh(script:"python3 test.py", returnStdout: true)
             }
         }
     }
