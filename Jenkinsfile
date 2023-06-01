@@ -9,8 +9,8 @@ pipeline {
               steps {
             script {
                 def output =  sh(script:"python3 test.py", returnStdout: true).trim()
-                   def maxNumber = Math.max(params.compareBuild, output)
-                    def minNumber = Math.min(params.compareBuild, output)
+                   def maxNumber = Math.max(params.compareBuild.toInt(), output.toInt())
+                    def minNumber = Math.min(params.compareBuild.toInt(), output.toInt())
 
                     // Calculate the percentage
                     def percentage = (maxNumber / (maxNumber + minNumber)) * 100
