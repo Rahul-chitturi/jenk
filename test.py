@@ -1,4 +1,4 @@
-print("hel")
+
 import xml.etree.ElementTree as ET
 
 # Load the XML file
