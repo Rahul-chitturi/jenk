@@ -14,10 +14,9 @@ pipeline {
                     def compareBuildNumber = params.compareBuild.toInteger()
                     def outputNumber = output.toInteger()
 
-                    def maxNumber = Math.max(compareBuildNumber, outputNumber)
-                    def minNumber = Math.min(compareBuildNumber, outputNumber)
+                    
 
-                    def percentage = (maxNumber / (maxNumber + minNumber)) * 100
+                    def percentage = ((outputNumber - compareBuildNumber) / compareBuildNumber) * 100
                     echo "Percentage: ${percentage}%"
                 }
             }
