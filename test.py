@@ -7,16 +7,10 @@ tree = ET.parse('standardResults.xml')
 # Get the root element
 root = tree.getroot()
 
-average_elements = root.findall('.//average')
+empty_group = root.find(".//Group[@label='']")
 
-# Calculate the average value
-total_sum = 0
-count = 0
-for average_element in average_elements:
-    average_value = int(average_element.text)
-    total_sum += average_value
-    count += 1
+if empty_group is not None:
+    # Fetch the avg_rt tag value
+    avg_rt_value = empty_group.find("avg_rt").attrib['value']
 
-average = total_sum / count
-
-print(round(average))
+    print(round(avg_rt_value * 1000))
