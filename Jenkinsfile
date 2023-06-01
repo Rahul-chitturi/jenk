@@ -2,7 +2,7 @@ pipeline {
     agent any
   parameters {
     string(name: 'branch_name', defaultValue: 'develop', description: 'Select the branch you want to deploy artifacts of to Jfrog')
-      string(name: 'compareBuild', defaultValue: 1000, description: 'Selesdfdsf')
+      string(name: 'compareBuild', defaultValue: '1000', description: 'Selesdfdsf')
   }
     stages {
         stage('Hello') {
