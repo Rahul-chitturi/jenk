@@ -2,7 +2,7 @@
 import xml.etree.ElementTree as ET
 
 # Load the XML file
-tree = ET.parse('standardResults.xml')
+tree = ET.parse('aggregate-results.xml')
 
 # Get the root element
 root = tree.getroot()
