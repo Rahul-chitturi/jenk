@@ -5,11 +5,12 @@ pipeline {
   }
     stages {
         stage('Hello') {
-            steps {
-                sh 'ls -ltr'
-                env.MYVAR  = sh(script:"python3 test.py", returnStdout: true).trim()
-                echo env.MYVAR
+              steps {
+            script {
+                def output =  sh(script:"python3 test.py", returnStdout: true).trim()
+                echo output
             }
+              }
         }
     }
 }
