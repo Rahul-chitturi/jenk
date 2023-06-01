@@ -1,23 +1,26 @@
 pipeline {
     agent any
-  parameters {
-    string(name: 'branch_name', defaultValue: 'develop', description: 'Select the branch you want to deploy artifacts of to Jfrog')
-      string(name: 'compareBuild', defaultValue: '1000', description: 'Selesdfdsf')
-  }
+
+    parameters {
+        string(name: 'branch_name', defaultValue: 'develop', description: 'Select the branch you want to deploy artifacts of to Jfrog')
+        string(name: 'compareBuild', defaultValue: '1000', description: 'Select the compare build number')
+    }
+
     stages {
         stage('Hello') {
-              steps {
-            script {
-                def output =  sh(script:"python3 test.py", returnStdout: true).trim()
-                   def maxNumber = Math.max(params.compareBuild.toInt(), output.toInt())
-                    def minNumber = Math.min(params.compareBuild.toInt(), output.toInt())
+            steps {
+                script {
+                    def output = sh(script: "python3 test.py", returnStdout: true).trim()
+                    def compareBuildNumber = params.compareBuild.toInteger()
+                    def outputNumber = output.toInteger()
 
-                    // Calculate the percentage
+                    def maxNumber = Math.max(compareBuildNumber, outputNumber)
+                    def minNumber = Math.min(compareBuildNumber, outputNumber)
+
                     def percentage = (maxNumber / (maxNumber + minNumber)) * 100
- echo percentage
+                    echo "Percentage: ${percentage}%"
+                }
             }
-              }
         }
     }
 }
-
