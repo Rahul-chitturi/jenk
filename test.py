@@ -13,4 +13,4 @@ if empty_group is not None:
     # Fetch the avg_rt tag value
     avg_rt_value = empty_group.find("avg_rt").attrib['value']
 
-    print(round(avg_rt_value * 1000))
+    print(round(int(avg_rt_value) * 1000))
