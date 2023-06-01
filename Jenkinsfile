@@ -7,8 +7,8 @@ pipeline {
         stage('Hello') {
             steps {
                 sh 'ls -ltr'
-                avg = sh(script:"python3 test.py", returnStdout: true)
-                echo avg
+                env.MYVAR  = sh(script:"python3 test.py", returnStdout: true).trim()
+                echo env.MYVAR
             }
         }
     }
